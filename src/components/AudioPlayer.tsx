@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Volume2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface AudioPlayerProps {
   isPlaying: boolean;
@@ -17,6 +18,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const [currentPosition, setCurrentPosition] = useState(0);
   const [duration, setDuration] = useState(0);
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (isPlaying && text) {
@@ -97,7 +99,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
       
       <div className="mt-2 text-center">
         <p className="text-xs text-gray-500">
-          {isPlaying ? 'Playing story narration...' : 'Tap play to listen'}
+          {isPlaying ? t('playing_story') : t('tap_play')}
         </p>
       </div>
     </div>

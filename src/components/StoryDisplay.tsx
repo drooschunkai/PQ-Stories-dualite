@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, BookOpen, CheckCircle, BrainCircuit, BookHeart, MessageSquareQuote } from 'lucide-react';
+import { Heart, BookOpen, BrainCircuit, BookHeart, MessageSquareQuote } from 'lucide-react';
 import { Prophet } from '../types';
 import { useAppContext } from '../context/AppContext';
+import { useLanguage } from '../context/LanguageContext';
 import AudioPlayer from './AudioPlayer';
 
 interface StoryDisplayProps {
@@ -14,6 +15,7 @@ interface StoryDisplayProps {
 const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact = false }) => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const { isFavorite, isCompleted, toggleFavorite, markCompleted } = useAppContext();
+  const { t } = useLanguage();
 
   const fullStoryText = [
     prophet.story.title,
@@ -43,6 +45,14 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
     red: { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-700', tag: 'bg-red-500' },
     green: { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-700', tag: 'bg-green-500' },
     sky: { bg: 'bg-sky-50', border: 'border-sky-200', text: 'text-sky-700', tag: 'bg-sky-500' },
+    indigo: { bg: 'bg-indigo-50', border: 'border-indigo-200', text: 'text-indigo-700', tag: 'bg-indigo-500' },
+    yellow: { bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-700', tag: 'bg-yellow-500' },
+    orange: { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-700', tag: 'bg-orange-500' },
+    teal: { bg: 'bg-teal-50', border: 'border-teal-200', text: 'text-teal-700', tag: 'bg-teal-500' },
+    violet: { bg: 'bg-violet-50', border: 'border-violet-200', text: 'text-violet-700', tag: 'bg-violet-500' },
+    cyan: { bg: 'bg-cyan-50', border: 'border-cyan-200', text: 'text-cyan-700', tag: 'bg-cyan-500' },
+    slate: { bg: 'bg-slate-50', border: 'border-slate-200', text: 'text-slate-700', tag: 'bg-slate-500' },
+    gold: { bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-700', tag: 'bg-yellow-500' },
   };
   const colors = colorClasses[prophet.color as keyof typeof colorClasses] || colorClasses.emerald;
 
@@ -70,7 +80,7 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
       <div className="relative">
         {isToday && (
           <div className={`absolute top-0 left-0 -mt-2 ml-2 px-4 py-1.5 rounded-full text-sm font-semibold text-white ${colors.tag} shadow-md`}>
-            ⭐ Today's Story
+            ⭐ {t('todays_story')}
           </div>
         )}
         <div className="flex justify-end space-x-2 pt-10">
@@ -100,36 +110,32 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
         </div>
 
         <div className={`${colors.bg} rounded-2xl p-5 border ${colors.border}`}>
-          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 ${colors.text}"><BookHeart size={20}/><span>Lesson of the Story</span></h3>
+          <h3 className={`font-semibold text-lg flex items-center space-x-2 mb-2 ${colors.text}`}>
+            <BookHeart size={20}/>
+            <span>{t('lesson_story')}</span>
+          </h3>
           <p className="text-gray-700 leading-relaxed text-sm">{prophet.story.mainLesson}</p>
         </div>
 
         <div className={`bg-purple-50 rounded-2xl p-5 border border-purple-200`}>
-          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-purple-700"><BrainCircuit size={20}/><span>Think About This</span></h3>
+          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-purple-700">
+            <BrainCircuit size={20}/>
+            <span>{t('think_about')}</span>
+          </h3>
           <p className="text-gray-700 leading-relaxed text-sm">{prophet.story.reflectionQuestion}</p>
         </div>
 
         <div className={`bg-green-50 rounded-2xl p-5 border border-green-200`}>
-          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-green-700"><MessageSquareQuote size={20}/><span>Special Prayer (Dua)</span></h3>
+          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-green-700">
+            <MessageSquareQuote size={20}/>
+            <span>{t('special_prayer')}</span>
+          </h3>
           <div className="text-center space-y-2 mt-3">
             <p className="text-lg font-arabic text-gray-800">{prophet.story.dua.arabic}</p>
             <p className="text-xs text-gray-600 italic">{prophet.story.dua.transliteration}</p>
             <p className="text-gray-700 text-sm">{prophet.story.dua.english}</p>
           </div>
         </div>
-
-        {isCompleted(prophet.id) && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-4 text-white text-center shadow-lg"
-          >
-            <div className="flex items-center justify-center space-x-2">
-              <CheckCircle size={24} />
-              <h3 className="text-lg font-bold">Story Completed! Alhamdulillah! 🎉</h3>
-            </div>
-          </motion.div>
-        )}
       </div>
     </div>
   );

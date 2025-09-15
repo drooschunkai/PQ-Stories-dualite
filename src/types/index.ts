@@ -23,3 +23,11 @@ export interface StorySection {
   paragraph: string;
   emotion?: string;
 }
+
+export type Language = 'en' | 'ar' | 'sv' | 'de';
+
+export interface Translations {
+  [key: string]: {
+    [K in Language]: string;
+  };
+}
