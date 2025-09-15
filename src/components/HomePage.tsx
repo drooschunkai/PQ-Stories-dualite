@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Prophet } from '../types';
 import { prophets } from '../data/prophets';
+import { useAppContext } from '../context/AppContext';
+import { Calendar, LayoutGrid, Heart, CheckSquare, ChevronLeft, ChevronRight } from 'lucide-react';
+import StoryDisplay from './StoryDisplay';
 
-interface HomePageProps {
-  onSelectProphet: (prophet: Prophet) => void;
-}
+type Tab = 'today' | 'all' | 'favorites' | 'completed';
 
-const HomePage: React.FC<HomePageProps> = ({ onSelectProphet }) => {
+const HomePage: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<Tab>('today');
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+  const { favorites, completed } = useAppContext();
+
   const getTimeBasedGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return 'Good Morning!';
@@ -15,20 +20,99 @@ const HomePage: React.FC<HomePageProps> = ({ onSelectProphet }) => {
     return 'Good Evening!';
   };
 
-  const getGreetingIcon = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) return '☀️';
-    if (hour < 17) return '🌤️';
-    return '🌙';
+  const todaysStory = prophets.find(p => p.id === 'ishaq') || prophets[3];
+  const favoriteStories = prophets.filter(p => favorites.includes(p.id));
+  const completedStories = prophets.filter(p => completed.includes(p.id));
+
+  const handleNextStory = () => {
+    setCurrentStoryIndex((prev) => (prev + 1) % prophets.length);
   };
 
-  // Get today's story (Adam's story for demo)
-  const todaysStory = prophets[0];
+  const handlePrevStory = () => {
+    setCurrentStoryIndex((prev) => (prev - 1 + prophets.length) % prophets.length);
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'today':
+        return <StoryDisplay prophet={todaysStory} isToday={true} />;
+      case 'all':
+        return (
+          <>
+            <motion.div
+              key={currentStoryIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <StoryDisplay prophet={prophets[currentStoryIndex]} isToday={false} />
+            </motion.div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mt-6 max-w-lg mx-auto">
+              <div className="flex items-center justify-between">
+                <button onClick={handlePrevStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100">
+                  <ChevronLeft size={20} />
+                  <span className="text-sm font-medium">Previous</span>
+                </button>
+                <div className="text-center">
+                  <p className="text-sm text-gray-500">Story</p>
+                  <p className="text-lg font-semibold text-gray-800">{currentStoryIndex + 1} of {prophets.length}</p>
+                </div>
+                <button onClick={handleNextStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100">
+                  <span className="text-sm font-medium">Next</span>
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+          </>
+        );
+      case 'favorites':
+      case 'completed':
+        const storiesToList = activeTab === 'favorites' ? favoriteStories : completedStories;
+        const emptyState = activeTab === 'favorites' 
+          ? { icon: '💖', title: 'No Favorites Yet', message: 'Tap the heart on a story to save it here.' }
+          : { icon: '📖', title: 'Start Your Journey!', message: 'Completed stories will appear here.' };
+
+        if (storiesToList.length === 0) {
+          return (
+            <div className="text-center py-12 max-w-lg mx-auto">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-sm border border-white/50">
+                <div className="text-6xl mb-4">{emptyState.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{emptyState.title}</h3>
+                <p className="text-gray-600">{emptyState.message}</p>
+              </div>
+            </div>
+          );
+        }
+        return (
+          <div className="space-y-4 max-w-lg mx-auto">
+            {storiesToList.map((prophet, index) => (
+               <motion.div
+                key={prophet.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <StoryDisplay prophet={prophet} isToday={false} isCompact={true} />
+              </motion.div>
+            ))}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const tabs = [
+    { id: 'today', icon: Calendar, label: 'Today' },
+    { id: 'all', icon: LayoutGrid, label: 'All Stories' },
+    { id: 'favorites', icon: Heart, label: 'Favorites', count: favorites.length },
+    { id: 'completed', icon: CheckSquare, label: 'Completed', count: completed.length },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 pb-20">
-      {/* Header */}
-      <div className="px-6 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 font-inter pb-20">
+      <header className="px-4 py-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,172 +125,50 @@ const HomePage: React.FC<HomePageProps> = ({ onSelectProphet }) => {
           <p className="text-gray-700 text-lg mb-6">
             Learn about Allah's messengers through beautiful stories
           </p>
-          
-          {/* Greeting Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-6"
-          >
-            <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full px-6 py-3 shadow-lg inline-flex items-center space-x-2">
-              <span className="text-white text-lg">{getGreetingIcon()}</span>
-              <span className="text-white font-semibold text-lg">{getTimeBasedGreeting()}</span>
-              <span className="text-white text-lg">🌻</span>
-            </div>
-          </motion.div>
-
-          {/* Welcome Message Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/50 mb-8"
-          >
-            <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center justify-center space-x-2">
+          <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full px-6 py-3 shadow-lg inline-flex items-center space-x-2">
+            <span className="text-white font-semibold text-lg">{getTimeBasedGreeting()}</span>
+            <span className="text-white text-lg">🌻</span>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mt-6">
+            <h2 className="text-lg font-semibold text-gray-800 flex items-center justify-center space-x-2">
               <span>Assalamu Alaikum, little learner!</span>
               <span>😊</span>
             </h2>
-            <p className="text-gray-600">Ready for today's amazing story?</p>
-          </motion.div>
+          </div>
         </motion.div>
-      </div>
+      </header>
 
-      {/* Navigation Section */}
-      <div className="max-w-md mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mb-6"
-        >
-          {/* Story Navigation */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mb-6">
-            <div className="flex items-center justify-between">
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                <span className="text-sm font-medium">Previous</span>
-              </button>
-              
-              <div className="text-center">
-                <p className="text-sm text-gray-500">Story</p>
-                <p className="text-lg font-semibold text-gray-800">1 of 25</p>
-              </div>
-              
-              <button 
-                onClick={() => onSelectProphet(todaysStory)}
-                className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors"
+      <main className="px-4">
+        <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-sm border border-white/50 mb-8">
+          <div className="flex items-center justify-between space-x-1">
+            {tabs.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as Tab)}
+                className={`flex-1 flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                  activeTab === tab.id
+                    ? 'bg-teal-500 text-white shadow-lg shadow-teal-200'
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
               >
-                <span className="text-sm font-medium">Next</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <tab.icon size={16} />
+                <span>{tab.label}</span>
+                {tab.count !== undefined && tab.count > 0 && (
+                  <span className={`text-xs font-bold px-1.5 py-0.5 rounded-full ${
+                    activeTab === tab.id ? 'bg-white text-teal-600' : 'bg-gray-200 text-gray-600'
+                  }`}>
+                    {tab.count}
+                  </span>
+                )}
               </button>
-            </div>
+            ))}
           </div>
+        </div>
 
-          {/* Today's Story Card */}
-          <div 
-            onClick={() => onSelectProphet(todaysStory)}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-sm border border-white/50 cursor-pointer hover:shadow-md transition-all duration-200 overflow-hidden"
-          >
-            {/* Story Header */}
-            <div className="bg-gradient-to-r from-emerald-500 to-green-500 px-4 py-3">
-              <div className="flex items-center justify-between">
-                <h3 className="text-white font-semibold flex items-center space-x-2">
-                  <span>📖</span>
-                  <span>Today's Story</span>
-                </h3>
-                <div className="flex items-center space-x-2">
-                  <button className="text-white/80 hover:text-white">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                  </button>
-                  <button className="text-white/80 hover:text-white">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Story Content */}
-            <div className="p-6">
-              <div className="flex items-start space-x-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center text-2xl text-white flex-shrink-0">
-                  {todaysStory.icon}
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-gray-800 mb-1">{todaysStory.story.title}</h4>
-                  <p className="text-gray-600 font-arabic">{todaysStory.arabicName}</p>
-                </div>
-                <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Today, 9:00 AM</span>
-              </div>
-
-              {/* Story Preview */}
-              <div className="space-y-4 mb-6">
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-gray-800 leading-relaxed text-sm">
-                    {todaysStory.story.content[0]}
-                  </p>
-                </div>
-                <div className="text-center">
-                  <button className="text-blue-500 text-sm font-medium hover:text-blue-600 transition-colors">
-                    → Continue Reading...
-                  </button>
-                </div>
-              </div>
-
-              {/* Story Sections */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2 text-sm">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                  <span className="font-medium text-gray-700">Lesson Of Dravat</span>
-                </div>
-                <div className="text-sm text-gray-600 pl-4">
-                  Allah taught Adam the names of everything - The beautiful world Allah created for his most beloved creation
-                </div>
-
-                <div className="flex items-center space-x-2 text-sm">
-                  <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                  <span className="font-medium text-gray-700">Think About This</span>
-                </div>
-                <div className="text-sm text-gray-600 pl-4">
-                  What does it mean to have a beautiful heart, and how can we remember Allah throughout our day?
-                </div>
-
-                <div className="flex items-center space-x-2 text-sm">
-                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  <span className="font-medium text-gray-700">Special Prayer (Dua)</span>
-                </div>
-                <div className="text-sm text-gray-600 pl-4">
-                  <p className="font-arabic text-base mb-1">{todaysStory.story.dua.arabic}</p>
-                  <p className="text-xs italic">{todaysStory.story.dua.transliteration}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Islamic Quote */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 mt-6 border border-white/50"
-        >
-          <div className="text-center">
-            <p className="text-gray-700 text-sm mb-2 italic">
-              "Reading stories teaches us good character through the good examples of the Prophets, and we learn patience and trust in God's supreme wisdom."
-            </p>
-            <p className="text-xs text-gray-500">Learn and Enjoy with the Stories of the Prophets in the Qur'an and their wisdom</p>
-          </div>
-        </motion.div>
-      </div>
+        <div className="animate-fade-in">
+          {renderContent()}
+        </div>
+      </main>
     </div>
   );
 };

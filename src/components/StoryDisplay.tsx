@@ -1,0 +1,138 @@
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Heart, BookOpen, CheckCircle, BrainCircuit, BookHeart, MessageSquareQuote } from 'lucide-react';
+import { Prophet } from '../types';
+import { useAppContext } from '../context/AppContext';
+import AudioPlayer from './AudioPlayer';
+
+interface StoryDisplayProps {
+  prophet: Prophet;
+  isToday: boolean;
+  isCompact?: boolean;
+}
+
+const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact = false }) => {
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const { isFavorite, isCompleted, toggleFavorite, markCompleted } = useAppContext();
+
+  const fullStoryText = [
+    prophet.story.title,
+    ...prophet.story.content,
+    prophet.story.mainLesson,
+    prophet.story.reflectionQuestion
+  ].join('. ');
+
+  useEffect(() => {
+    if (!isCompact) {
+      const timer = setTimeout(() => {
+        if (!isCompleted(prophet.id)) {
+          markCompleted(prophet.id);
+        }
+      }, 10000); // Mark as read after 10 seconds of viewing
+      return () => clearTimeout(timer);
+    }
+  }, [prophet.id, isCompleted, markCompleted, isCompact]);
+
+  const toggleAudio = () => setIsAudioPlaying(!isAudioPlaying);
+  
+  const colorClasses = {
+    emerald: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-700', tag: 'bg-emerald-500' },
+    blue: { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-700', tag: 'bg-blue-500' },
+    amber: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', tag: 'bg-amber-500' },
+    purple: { bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-700', tag: 'bg-purple-500' },
+    red: { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-700', tag: 'bg-red-500' },
+    green: { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-700', tag: 'bg-green-500' },
+    sky: { bg: 'bg-sky-50', border: 'border-sky-200', text: 'text-sky-700', tag: 'bg-sky-500' },
+  };
+  const colors = colorClasses[prophet.color as keyof typeof colorClasses] || colorClasses.emerald;
+
+  if (isCompact) {
+    return (
+      <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50`}>
+        <div className="flex items-center space-x-4">
+          <div className={`w-12 h-12 ${colors.tag} rounded-full flex items-center justify-center text-xl text-white font-semibold relative`}>
+            {prophet.icon}
+            {isFavorite(prophet.id) && <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white">💖</div>}
+            {isCompleted(prophet.id) && !isFavorite(prophet.id) && <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center text-white">✓</div>}
+          </div>
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-gray-800">{prophet.name}</h3>
+            <p className="text-gray-600 font-arabic text-sm">{prophet.arabicName}</p>
+          </div>
+          <p className="text-gray-600 text-sm line-clamp-2">{prophet.story.title}</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`bg-yellow-50/30 rounded-3xl p-4 sm:p-6 shadow-lg border border-yellow-100/50 max-w-lg mx-auto`}>
+      <div className="relative">
+        {isToday && (
+          <div className={`absolute top-0 left-0 -mt-2 ml-2 px-4 py-1.5 rounded-full text-sm font-semibold text-white ${colors.tag} shadow-md`}>
+            ⭐ Today's Story
+          </div>
+        )}
+        <div className="flex justify-end space-x-2 pt-10">
+          <button
+            onClick={() => toggleFavorite(prophet.id)}
+            className={`p-2 rounded-full transition-colors ${isFavorite(prophet.id) ? 'bg-red-100 text-red-500' : 'bg-gray-100 text-gray-400 hover:text-red-500'}`}
+          >
+            <Heart size={20} fill={isFavorite(prophet.id) ? 'currentColor' : 'none'} />
+          </button>
+          <button className="p-2 rounded-full bg-gray-100 text-gray-400">
+            <BookOpen size={20} />
+          </button>
+        </div>
+      </div>
+
+      <div className="text-center px-4">
+        <h2 className="text-4xl font-bold text-gray-800">{prophet.name}</h2>
+        <p className="text-2xl font-arabic text-gray-600 mt-1">{prophet.arabicName}</p>
+        <p className={`font-semibold mt-2 ${colors.text}`}>{prophet.story.title}</p>
+      </div>
+
+      <div className="mt-6 space-y-4">
+        <AudioPlayer isPlaying={isAudioPlaying} onTogglePlay={toggleAudio} text={fullStoryText} />
+
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-white/50">
+          <p className="text-gray-700 leading-relaxed">{prophet.story.content.join(' ')}</p>
+        </div>
+
+        <div className={`${colors.bg} rounded-2xl p-5 border ${colors.border}`}>
+          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 ${colors.text}"><BookHeart size={20}/><span>Lesson of the Story</span></h3>
+          <p className="text-gray-700 leading-relaxed text-sm">{prophet.story.mainLesson}</p>
+        </div>
+
+        <div className={`bg-purple-50 rounded-2xl p-5 border border-purple-200`}>
+          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-purple-700"><BrainCircuit size={20}/><span>Think About This</span></h3>
+          <p className="text-gray-700 leading-relaxed text-sm">{prophet.story.reflectionQuestion}</p>
+        </div>
+
+        <div className={`bg-green-50 rounded-2xl p-5 border border-green-200`}>
+          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-green-700"><MessageSquareQuote size={20}/><span>Special Prayer (Dua)</span></h3>
+          <div className="text-center space-y-2 mt-3">
+            <p className="text-lg font-arabic text-gray-800">{prophet.story.dua.arabic}</p>
+            <p className="text-xs text-gray-600 italic">{prophet.story.dua.transliteration}</p>
+            <p className="text-gray-700 text-sm">{prophet.story.dua.english}</p>
+          </div>
+        </div>
+
+        {isCompleted(prophet.id) && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-4 text-white text-center shadow-lg"
+          >
+            <div className="flex items-center justify-center space-x-2">
+              <CheckCircle size={24} />
+              <h3 className="text-lg font-bold">Story Completed! Alhamdulillah! 🎉</h3>
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default StoryDisplay;

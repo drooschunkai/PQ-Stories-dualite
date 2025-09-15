@@ -7,21 +7,12 @@ export const prophets: Prophet[] = [
     arabicName: 'آدم',
     order: 1,
     story: {
-      title: 'The First Human - Prophet Adam (AS)',
+      title: 'The First Human',
       content: [
-        'Long, long ago, before any people lived on Earth, Allah decided to create the very first human being.',
-        'Allah shaped Adam (peace be upon him) from clay with His own hands. The clay was smooth and perfect, like the most beautiful pottery.',
-        'Then Allah breathed life into Adam. Suddenly, Adam opened his eyes and could see the beautiful world around him!',
-        'Allah taught Adam the names of everything - the trees, the animals, the stars in the sky. Adam was very smart and learned quickly.',
-        'The angels were amazed! They bowed down to Adam because Allah had made him so special.',
-        'Allah created a beautiful garden called Jannah (Paradise) for Adam to live in. It had sweet fruits, cool shade, and everything Adam needed.',
-        'Adam felt lonely, so Allah created Hawwa (Eve) to be his companion. They were happy together in the peaceful garden.',
-        'Allah told them they could eat from any tree in the garden, except for one special tree.',
-        'But Shaytan (Satan) whispered bad thoughts to them, and they forgot Allah\'s command and ate from that tree.',
-        'Adam and Hawwa felt very sorry and asked Allah to forgive them. Allah, who is Most Merciful, forgave them because they were truly sorry.'
+        'Long, long ago, before any people lived on Earth, Allah decided to create the very first human being. Allah shaped Adam (peace be upon him) from clay and breathed life into him. Allah taught Adam the names of everything, and the angels were amazed by his knowledge. Allah created a beautiful garden called Jannah for Adam and his wife, Hawwa (Eve), to live in. They were happy, but they made a mistake by eating from a forbidden tree after listening to Shaytan. They felt very sorry and asked Allah for forgiveness. Allah, the Most Merciful, forgave them and sent them to Earth to be the first family and to guide humanity.'
       ],
       setting: 'In a time before time, in a beautiful garden created by Allah',
-      mainLesson: 'When we make mistakes, we should say sorry to Allah and ask for forgiveness. Allah always forgives those who are truly sorry.',
+      mainLesson: 'When we make mistakes, we should always say sorry to Allah and ask for forgiveness. Allah always forgives those who are truly sorry.',
       reflectionQuestion: 'When you do something wrong, what should you do to make it right?',
       dua: {
         arabic: 'رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ',
@@ -38,20 +29,9 @@ export const prophets: Prophet[] = [
     arabicName: 'نوح',
     order: 2,
     story: {
-      title: 'The Great Flood - Prophet Nuh (AS)',
+      title: 'The Great Flood',
       content: [
-        'Prophet Nuh (peace be upon him) lived in a time when people had forgotten about Allah.',
-        'Nuh was a kind and patient man who loved Allah very much. He always prayed and remembered Allah.',
-        'Allah chose Nuh to be His messenger. Nuh\'s job was to remind people to worship only Allah.',
-        'For many, many years - almost 950 years! - Nuh told people about Allah with a gentle, caring voice.',
-        'But most people didn\'t want to listen. They laughed at Nuh and said mean things to him.',
-        'Nuh never got angry. He kept being kind and patient, just like a good teacher.',
-        'Allah told Nuh that a big flood was coming. Only the people who believed in Allah would be saved.',
-        'Allah commanded Nuh to build a huge boat called an ark. It was bigger than any boat people had ever seen!',
-        'People laughed when they saw Nuh building the boat on dry land. But Nuh trusted Allah completely.',
-        'Allah told Nuh to bring his family and two of every animal onto the boat - elephants, birds, lions, sheep, and many more!',
-        'When the rain started, it poured and poured like never before. The water rose higher and higher.',
-        'But inside the ark, Nuh and all the animals were safe and dry, protected by Allah\'s mercy.'
+        'Prophet Nuh (peace be upon him) was a kind and patient man who lived when people had forgotten Allah. For 950 years, he gently reminded them to worship the one true God, but most people laughed at him. So, Allah commanded Nuh to build a huge boat, an ark. People made fun of him for building a boat on dry land, but Nuh had complete trust in Allah. He gathered his family, the believers, and a pair of every animal onto the ark. Then, a great flood covered the Earth, but everyone inside the ark was safe, protected by Allah\'s mercy.'
       ],
       setting: 'In an ancient land where people had beautiful cities but had forgotten their Creator',
       mainLesson: 'We should always be patient when teaching others about what is right, even if they don\'t listen at first.',
@@ -71,20 +51,9 @@ export const prophets: Prophet[] = [
     arabicName: 'إبراهيم',
     order: 3,
     story: {
-      title: 'The Friend of Allah - Prophet Ibrahim (AS)',
+      title: 'The Friend of Allah',
       content: [
-        'Prophet Ibrahim (peace be upon him) lived in a land where people worshipped statues made of stone.',
-        'Even as a young boy, Ibrahim was very smart. He looked at the stone statues and wondered: "How can these statues help anyone? They can\'t even move!"',
-        'Ibrahim\'s father made these statues, but Ibrahim knew in his heart that only Allah, who created everything, deserved to be worshipped.',
-        'One night, Ibrahim looked up at the beautiful stars twinkling in the dark sky. He felt Allah\'s presence everywhere.',
-        'When people left their temple, Ibrahim went inside and broke all the statues except the biggest one.',
-        'When people found the broken statues, they were very upset. Ibrahim showed them that the statues couldn\'t even protect themselves!',
-        'The king was angry and decided to throw Ibrahim into a huge fire. But Ibrahim wasn\'t afraid because he trusted Allah completely.',
-        'Something amazing happened! Allah made the fire cool and safe for Ibrahim. He walked out without even a tiny burn!',
-        'Everyone was amazed at this miracle. They saw that Allah was truly powerful and protected those who believed in Him.',
-        'Ibrahim married a good woman named Sarah, and Allah blessed them with a son named Ishaq (Isaac) when they were very old.',
-        'Ibrahim also had another son named Ismail. Allah asked Ibrahim to take Ismail to a desert place that would later become Makkah.',
-        'Ibrahim was a true friend of Allah because he always trusted Allah, even when things seemed difficult.'
+        'Prophet Ibrahim (peace be upon him) was very smart, even as a boy. He knew that the stone statues his people worshipped were not real gods. He bravely challenged their beliefs and showed them how powerless the idols were. The angry king threw Ibrahim into a huge fire, but Ibrahim trusted Allah completely. By Allah\'s command, the fire became cool and safe, and Ibrahim walked out unharmed! This miracle showed everyone the power of the one true God. Because of his unwavering faith, Ibrahim is known as "Khalilullah," the friend of Allah.'
       ],
       setting: 'In ancient Mesopotamia, a land of rivers and cities where people carved beautiful statues',
       mainLesson: 'We should always trust Allah, even when things seem scary or difficult. Allah always protects those who believe in Him.',
@@ -99,25 +68,36 @@ export const prophets: Prophet[] = [
     icon: '⭐'
   },
   {
+    id: 'ishaq',
+    name: 'Ishaq (Isaac)',
+    arabicName: 'إسحاق',
+    order: 4,
+    story: {
+      title: 'The Promised Gift',
+      content: [
+        'Prophet Ibrahim and his wife Sarah waited and waited for a baby for many, many years. They prayed to Allah and never gave up hope. One day, special visitors came to their home - they were angels! The angels had wonderful news: "Allah is giving you a baby boy!" Sarah was so surprised and happy. Just as Allah promised, they had a son named Ishaq (peace be upon him). Ishaq grew up to be a great prophet, just like his father. His story teaches us that Allah always answers our prayers and that good things come to those who are patient.'
+      ],
+      setting: 'In the blessed land of Palestine, under the shade of ancient olive trees',
+      mainLesson: 'Allah always keeps His promises. We should have patience and never lose hope in Allah\'s mercy.',
+      reflectionQuestion: 'Can you think of a time you were patient and something good happened?',
+      dua: {
+        arabic: 'الْحَمْدُ لِلَّهِ الَّذِي وَهَبَ لِي عَلَى الْكِبَرِ إِسْمَاعِيلَ وَإِسْحَاقَ',
+        english: 'Praise to Allah, who has granted to me in my old age Ishmael and Isaac.',
+        transliteration: 'Alhamdu lillahil-lathee wahaba lee \'alal kibari Isma\'eela wa Ishaqa'
+      }
+    },
+    color: 'sky',
+    icon: '🎁'
+  },
+  {
     id: 'yusuf',
     name: 'Yusuf (Joseph)',
     arabicName: 'يوسف',
-    order: 4,
+    order: 5,
     story: {
-      title: 'The Beautiful Dream - Prophet Yusuf (AS)',
+      title: 'The Beautiful Dream',
       content: [
-        'Prophet Yusuf (peace be upon him) was a very special young boy with the most beautiful character.',
-        'One morning, Yusuf woke up excited. He had seen an amazing dream with eleven stars, the sun, and the moon bowing down to him!',
-        'He told his loving father, Prophet Ya\'qub (Jacob), about the dream. His father smiled and knew this meant something wonderful.',
-        'Yusuf had eleven brothers, but some of them felt jealous because their father loved Yusuf very much.',
-        'The jealous brothers made a bad plan. They took Yusuf far away and put him in a deep, dark well.',
-        'Yusuf was scared and alone in the well, but he remembered Allah and prayed. Allah comforted his heart.',
-        'Some travelers found Yusuf and took him to Egypt, where he was sold as a servant to an important man.',
-        'Even though Yusuf was far from home, he always remembered Allah and was honest and kind to everyone.',
-        'Yusuf grew up to be very wise. Allah gave him the special gift of understanding dreams.',
-        'When the king of Egypt had a confusing dream, only Yusuf could explain what it meant.',
-        'Yusuf became a very important leader in Egypt and helped save people from a time when there wasn\'t enough food.',
-        'Many years later, his brothers came to Egypt looking for food. Yusuf forgave them and brought his whole family to live safely in Egypt.'
+        'Prophet Yusuf (peace be upon him) had an amazing dream that eleven stars, the sun, and the moon were bowing to him. His jealous brothers threw him into a well, but he was rescued and taken to Egypt. Despite many challenges, Yusuf remained patient and always trusted in Allah. Allah gave him the wisdom to understand dreams, and he became a great leader in Egypt. Years later, he forgave his brothers and was reunited with his family. His life shows us that even in hard times, Allah has a beautiful plan for us if we are patient and forgiving.'
       ],
       setting: 'In the ancient lands of Palestine and the magnificent kingdom of Egypt along the Nile River',
       mainLesson: 'Even when bad things happen to us, Allah has a plan. If we stay patient and keep doing good, Allah will help us.',
@@ -135,24 +115,11 @@ export const prophets: Prophet[] = [
     id: 'musa',
     name: 'Musa (Moses)',
     arabicName: 'موسى',
-    order: 5,
+    order: 6,
     story: {
-      title: 'The Staff and the Sea - Prophet Musa (AS)',
+      title: 'The Staff and the Sea',
       content: [
-        'Prophet Musa (peace be upon him) was born at a time when a mean king ruled Egypt.',
-        'Baby Musa\'s mother put him in a basket and placed it gently in the river to keep him safe.',
-        'The basket floated to the king\'s palace, where the queen found baby Musa and decided to raise him as her own son.',
-        'Musa grew up in the palace, but Allah had special plans for him.',
-        'One day, while taking care of sheep in the desert, Musa saw something amazing - a bush that was on fire but wasn\'t burning up!',
-        'From the burning bush, Allah spoke to Musa and chose him to be a prophet.',
-        'Allah gave Musa a wooden staff (a walking stick) that could do miracles.',
-        'When Musa threw his staff on the ground, it turned into a big snake! When he picked it up, it became a staff again.',
-        'Allah sent Musa to tell the mean king to let the people of Israel leave Egypt and worship Allah freely.',
-        'The king said no many times, so Allah sent different signs to show His power.',
-        'Finally, Musa led his people out of Egypt. But the king changed his mind and chased them with his army!',
-        'When they reached the Red Sea, Musa raised his staff, and Allah made the water split apart like two walls!',
-        'Musa and his people walked safely across on dry ground. When the king\'s army tried to follow, the water came back together.',
-        'The people were free! They sang songs of happiness and thanked Allah for saving them.'
+        'Prophet Musa (peace be upon him) was sent to a cruel king in Egypt to free the Children of Israel. Allah gave Musa miracles, like a staff that turned into a snake. When the king chased Musa and his people to the Red Sea, they were trapped. But Musa, trusting in Allah, struck the sea with his staff. The sea split in two, creating a dry path for them to cross safely! When the king\'s army followed, the sea closed on them. This powerful story teaches us that with faith in Allah, nothing is impossible.'
       ],
       setting: 'In ancient Egypt by the mighty Nile River and the vast desert where shepherds watched their flocks',
       mainLesson: 'Allah always helps those who stand up for what is right. We should never be afraid to do good when Allah is with us.',
@@ -172,22 +139,9 @@ export const prophets: Prophet[] = [
     arabicName: 'محمد',
     order: 25,
     story: {
-      title: 'The Last Messenger - Prophet Muhammad (SAW)',
+      title: 'The Last Messenger',
       content: [
-        'Prophet Muhammad (peace and blessings be upon him) was born in the beautiful city of Makkah.',
-        'Even as a child, Muhammad was known for being honest and trustworthy. People called him "Al-Ameen" (the trustworthy one).',
-        'Muhammad grew up to be a kind and thoughtful man who often went to a quiet cave called Hira to think and pray.',
-        'One special night, when Muhammad was 40 years old, the Angel Jibril (Gabriel) came to him in the cave.',
-        'The angel told Muhammad that Allah had chosen him to be the last prophet, bringing the final message to all people.',
-        'Muhammad felt scared at first, but his loving wife Khadijah comforted him and believed in him.',
-        'Muhammad began teaching people about Allah, just like all the prophets before him had done.',
-        'He taught people to be kind to their parents, to help the poor, to tell the truth, and to worship only Allah.',
-        'Some people in Makkah didn\'t like his message and were mean to him, but Muhammad was always patient and forgiving.',
-        'Allah revealed the Quran to Muhammad, a beautiful book full of guidance for all people until the end of time.',
-        'Muhammad and his followers moved to a city called Madinah, where they built a peaceful community.',
-        'Muhammad treated everyone with kindness - Muslims, Christians, Jews, and all people. He was a mercy to the whole world.',
-        'Before Prophet Muhammad passed away, he had shared Allah\'s complete message with humanity.',
-        'Muhammad is the last prophet, and his teachings will guide people until the Day of Judgment.'
+        'Prophet Muhammad (peace and blessings be upon him) is the last and final messenger of Allah. He was born in Makkah and was known by everyone as "Al-Ameen" (the trustworthy one) because of his perfect honesty. At age 40, Allah chose him to deliver the final message to all of humanity, the Quran. He taught people to worship only one God, to be kind to everyone, to care for the poor, and to be just. He was a mercy to all the worlds, and his beautiful example is a guide for us in every part of our lives.'
       ],
       setting: 'In the sacred city of Makkah and the peaceful city of Madinah, in the beautiful desert of Arabia',
       mainLesson: 'Prophet Muhammad showed us how to live a good life by being kind, honest, and always remembering Allah. We should try to follow his beautiful example.',
