@@ -22,12 +22,16 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
   useEffect(() => {
     const loadVoices = () => {
-      setVoices(speechSynthesis.getVoices());
+      const availableVoices = speechSynthesis.getVoices();
+      if (availableVoices.length > 0) {
+        setVoices(availableVoices);
+      }
     };
+    
+    // Voices can load asynchronously. We need to check and listen for changes.
     loadVoices();
     speechSynthesis.onvoiceschanged = loadVoices;
 
-    // Cleanup function to cancel speech when component unmounts
     return () => {
       speechSynthesis.cancel();
       speechSynthesis.onvoiceschanged = null;
@@ -36,55 +40,73 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
   useEffect(() => {
     if (isPlaying && text && voices.length > 0) {
-      speechSynthesis.cancel(); // Cancel any previous speech
+      speechSynthesis.cancel(); // Clear any previous speech
 
       const utterance = new SpeechSynthesisUtterance(text);
       
-      const langConfig: { [key in Language]: { bcp47: string, voiceName?: RegExp, gender?: string } } = {
-        en: { bcp47: 'en-US', voiceName: /narrator|female|zira|samantha/i, gender: 'female' },
-        ar: { bcp47: 'ar-SA', voiceName: /female|heda|majed/i, gender: 'female' },
-        sv: { bcp47: 'sv-SE', voiceName: /female|sofie|alva/i, gender: 'female' },
-        de: { bcp47: 'de-DE', voiceName: /female|katja|anna/i, gender: 'female' },
+      const langConfig: { [key in Language]: { bcp47: string, voiceNameRegex?: RegExp } } = {
+        en: { bcp47: 'en-US', voiceNameRegex: /narrator|female|zira|samantha/i },
+        ar: { bcp47: 'ar-SA', voiceNameRegex: /female|heda|majed/i },
+        sv: { bcp47: 'sv-SE', voiceNameRegex: /female|sofie|alva/i },
+        de: { bcp47: 'de-DE', voiceNameRegex: /female|katja|anna/i },
       };
 
       const config = langConfig[language];
       utterance.lang = config.bcp47;
       utterance.rate = speed;
-      utterance.pitch = 1.1; // Slightly higher pitch for a more engaging storyteller voice
+      utterance.pitch = 1.1;
       utterance.volume = 1;
 
-      const filteredVoices = voices.filter(voice => voice.lang.startsWith(language));
-      
-      let selectedVoice = filteredVoices.find(voice => config.voiceName?.test(voice.name.toLowerCase()));
+      const findBestVoice = (): SpeechSynthesisVoice | null => {
+        const langVoices = voices.filter(v => v.lang.startsWith(language));
+        if (langVoices.length === 0) return null;
+
+        // Priority 1: A default voice for the language
+        let voice = langVoices.find(v => v.default);
+        if (voice) return voice;
+
+        // Priority 2: A voice matching a known good name
+        if (config.voiceNameRegex) {
+          voice = langVoices.find(v => config.voiceNameRegex!.test(v.name));
+          if (voice) return voice;
+        }
+
+        // Priority 3: A female voice
+        voice = langVoices.find(v => v.name.toLowerCase().includes('female'));
+        if (voice) return voice;
+
+        // Priority 4: The first available voice for the language
+        return langVoices[0];
+      };
+
+      const selectedVoice = findBestVoice();
+      utterance.voice = selectedVoice;
+
       if (!selectedVoice) {
-        selectedVoice = filteredVoices.find(voice => voice.name.toLowerCase().includes(config.gender || 'female'));
+          console.warn(`No dedicated voice found for language: ${language}. The browser will attempt to use its default mechanism, which may fall back to English.`);
       }
-      if (!selectedVoice) {
-        selectedVoice = filteredVoices[0];
-      }
-      
-      utterance.voice = selectedVoice || null;
 
       utterance.onend = () => {
         if (isPlaying) {
-          onTogglePlay(); // This will set isPlaying to false
+          onTogglePlay(); // Automatically toggle off when done
         }
       };
       
       utterance.onerror = (event) => {
-        console.error('SpeechSynthesisUtterance.onerror', event);
+        console.error('SpeechSynthesisUtterance.onerror:', event);
         if (isPlaying) {
-          onTogglePlay();
+          onTogglePlay(); // Toggle off on error
         }
       };
 
       utteranceRef.current = utterance;
       speechSynthesis.speak(utterance);
-    } else {
+
+    } else if (!isPlaying) {
       speechSynthesis.cancel();
     }
 
-    // This cleanup function is crucial to stop speech when isPlaying becomes false
+    // Cleanup function to stop speech when component unmounts or dependencies change
     return () => {
       if (utteranceRef.current) {
         utteranceRef.current.onend = null;
@@ -100,6 +122,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
         <button
           onClick={onTogglePlay}
           className="p-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 transition-all text-white shadow-lg flex-shrink-0"
+          aria-label={isPlaying ? 'Pause narration' : 'Play narration'}
         >
           {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-0.5 rtl:ml-0 rtl:mr-0.5" />}
         </button>

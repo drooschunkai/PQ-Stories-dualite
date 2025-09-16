@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
           <>
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mb-6 max-w-lg w-full mx-auto">
               <div className="flex items-center justify-between">
-                <button onClick={handlePrevStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100 rtl:space-x-reverse">
+                <button onClick={handlePrevStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-teal-100/70 rtl:space-x-reverse">
                   <ChevronLeft size={20} />
                   <span className="text-sm font-medium">{t('previous')}</span>
                 </button>
@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
                   <p className="text-sm text-gray-500">{t('story')}</p>
                   <p className="text-lg font-semibold text-gray-800">{currentStoryIndex + 1} {t('of')} {prophets.length}</p>
                 </div>
-                <button onClick={handleNextStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100 rtl:space-x-reverse">
+                <button onClick={handleNextStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-teal-100/70 rtl:space-x-reverse">
                   <span className="text-sm font-medium">{t('next')}</span>
                   <ChevronRight size={20} />
                 </button>
@@ -129,7 +129,7 @@ const HomePage: React.FC = () => {
           <div className="flex justify-between items-start mb-4">
             <div className="flex-1" />
             <div className="flex-1 text-center">
-              <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent mb-3">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent mb-3">
                 {t('prophet_stories')}
               </h1>
             </div>
@@ -160,7 +160,7 @@ const HomePage: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as Tab)}
-                className={`flex-1 flex items-center justify-center space-x-2 rtl:space-x-reverse px-2 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
+                className={`flex-1 flex items-center justify-center space-x-1 sm:space-x-2 rtl:space-x-reverse px-1 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                   activeTab === tab.id
                     ? 'bg-teal-500 text-white shadow-lg shadow-teal-200'
                     : 'text-gray-600 hover:bg-teal-100/70 hover:text-teal-700'

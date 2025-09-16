@@ -115,7 +115,7 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
       </div>
 
       <div className="text-center px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">{prophet.name}</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">{prophet.name}</h2>
         <p className="text-xl sm:text-2xl font-arabic text-gray-600 mt-1">{prophet.arabicName}</p>
         <p className={`font-semibold mt-2 ${colors.text}`}>{storyTitle}</p>
       </div>
