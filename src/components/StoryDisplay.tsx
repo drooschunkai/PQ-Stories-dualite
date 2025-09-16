@@ -15,13 +15,24 @@ interface StoryDisplayProps {
 const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact = false }) => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const { isFavorite, isCompleted, toggleFavorite, markCompleted } = useAppContext();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+
+  const getTranslated = <T extends string | string[]>(data: { [lang: string]: T }): T => {
+    return data[language] || data['en'];
+  };
+
+  const storyTitle = getTranslated(prophet.story.title);
+  const storyContent = getTranslated(prophet.story.content);
+  const mainLesson = getTranslated(prophet.story.mainLesson);
+  const reflectionQuestion = getTranslated(prophet.story.reflectionQuestion);
+  const duaEnglish = getTranslated(prophet.story.dua.english);
 
   const fullStoryText = [
-    prophet.story.title,
-    ...prophet.story.content,
-    prophet.story.mainLesson,
-    prophet.story.reflectionQuestion
+    storyTitle,
+    ...storyContent,
+    mainLesson,
+    reflectionQuestion,
+    duaEnglish
   ].join('. ');
 
   useEffect(() => {
@@ -34,6 +45,13 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
       return () => clearTimeout(timer);
     }
   }, [prophet.id, isCompleted, markCompleted, isCompact]);
+  
+  // Stop audio when story changes
+  useEffect(() => {
+    return () => {
+      setIsAudioPlaying(false);
+    };
+  }, [prophet.id]);
 
   const toggleAudio = () => setIsAudioPlaying(!isAudioPlaying);
   
@@ -59,31 +77,31 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
   if (isCompact) {
     return (
       <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50`}>
-        <div className="flex items-center space-x-4">
-          <div className={`w-12 h-12 ${colors.tag} rounded-full flex items-center justify-center text-xl text-white font-semibold relative`}>
+        <div className="flex items-center space-x-4 rtl:space-x-reverse">
+          <div className={`w-12 h-12 ${colors.tag} rounded-full flex items-center justify-center text-xl text-white font-semibold relative flex-shrink-0`}>
             {prophet.icon}
-            {isFavorite(prophet.id) && <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white">💖</div>}
-            {isCompleted(prophet.id) && !isFavorite(prophet.id) && <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center text-white">✓</div>}
+            {isFavorite(prophet.id) && <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">💖</div>}
+            {isCompleted(prophet.id) && !isFavorite(prophet.id) && <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">✓</div>}
           </div>
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-800">{prophet.name}</h3>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-semibold text-gray-800 truncate">{prophet.name}</h3>
             <p className="text-gray-600 font-arabic text-sm">{prophet.arabicName}</p>
           </div>
-          <p className="text-gray-600 text-sm line-clamp-2">{prophet.story.title}</p>
+          <p className="text-gray-600 text-sm line-clamp-2 flex-shrink-0 max-w-[40%] text-right rtl:text-left">{storyTitle}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`bg-yellow-50/30 rounded-3xl p-4 sm:p-6 shadow-lg border border-yellow-100/50 max-w-lg mx-auto`}>
+    <div className={`bg-yellow-50/30 rounded-3xl p-4 sm:p-6 shadow-lg border border-yellow-100/50 max-w-lg w-full mx-auto`}>
       <div className="relative">
         {isToday && (
-          <div className={`absolute top-0 left-0 -mt-2 ml-2 px-4 py-1.5 rounded-full text-sm font-semibold text-white ${colors.tag} shadow-md`}>
+          <div className={`absolute top-0 left-0 rtl:left-auto rtl:right-0 -mt-2 ml-2 rtl:ml-0 rtl:mr-2 px-4 py-1.5 rounded-full text-sm font-semibold text-white ${colors.tag} shadow-md`}>
             ⭐ {t('todays_story')}
           </div>
         )}
-        <div className="flex justify-end space-x-2 pt-10">
+        <div className="flex justify-end space-x-2 rtl:space-x-reverse pt-10">
           <button
             onClick={() => toggleFavorite(prophet.id)}
             className={`p-2 rounded-full transition-colors ${isFavorite(prophet.id) ? 'bg-red-100 text-red-500' : 'bg-gray-100 text-gray-400 hover:text-red-500'}`}
@@ -97,43 +115,43 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
       </div>
 
       <div className="text-center px-4">
-        <h2 className="text-4xl font-bold text-gray-800">{prophet.name}</h2>
-        <p className="text-2xl font-arabic text-gray-600 mt-1">{prophet.arabicName}</p>
-        <p className={`font-semibold mt-2 ${colors.text}`}>{prophet.story.title}</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">{prophet.name}</h2>
+        <p className="text-xl sm:text-2xl font-arabic text-gray-600 mt-1">{prophet.arabicName}</p>
+        <p className={`font-semibold mt-2 ${colors.text}`}>{storyTitle}</p>
       </div>
 
       <div className="mt-6 space-y-4">
         <AudioPlayer isPlaying={isAudioPlaying} onTogglePlay={toggleAudio} text={fullStoryText} />
 
         <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-white/50">
-          <p className="text-gray-700 leading-relaxed">{prophet.story.content.join(' ')}</p>
+          <p className="text-gray-700 leading-relaxed">{storyContent.join(' ')}</p>
         </div>
 
         <div className={`${colors.bg} rounded-2xl p-5 border ${colors.border}`}>
-          <h3 className={`font-semibold text-lg flex items-center space-x-2 mb-2 ${colors.text}`}>
+          <h3 className={`font-semibold text-lg flex items-center space-x-2 rtl:space-x-reverse mb-2 ${colors.text}`}>
             <BookHeart size={20}/>
             <span>{t('lesson_story')}</span>
           </h3>
-          <p className="text-gray-700 leading-relaxed text-sm">{prophet.story.mainLesson}</p>
+          <p className="text-gray-700 leading-relaxed text-sm">{mainLesson}</p>
         </div>
 
         <div className={`bg-purple-50 rounded-2xl p-5 border border-purple-200`}>
-          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-purple-700">
+          <h3 className="font-semibold text-lg flex items-center space-x-2 rtl:space-x-reverse mb-2 text-purple-700">
             <BrainCircuit size={20}/>
             <span>{t('think_about')}</span>
           </h3>
-          <p className="text-gray-700 leading-relaxed text-sm">{prophet.story.reflectionQuestion}</p>
+          <p className="text-gray-700 leading-relaxed text-sm">{reflectionQuestion}</p>
         </div>
 
         <div className={`bg-green-50 rounded-2xl p-5 border border-green-200`}>
-          <h3 className="font-semibold text-lg flex items-center space-x-2 mb-2 text-green-700">
+          <h3 className="font-semibold text-lg flex items-center space-x-2 rtl:space-x-reverse mb-2 text-green-700">
             <MessageSquareQuote size={20}/>
             <span>{t('special_prayer')}</span>
           </h3>
           <div className="text-center space-y-2 mt-3">
             <p className="text-lg font-arabic text-gray-800">{prophet.story.dua.arabic}</p>
             <p className="text-xs text-gray-600 italic">{prophet.story.dua.transliteration}</p>
-            <p className="text-gray-700 text-sm">{prophet.story.dua.english}</p>
+            <p className="text-gray-700 text-sm">{duaEnglish}</p>
           </div>
         </div>
       </div>

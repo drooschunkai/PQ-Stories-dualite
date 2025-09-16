@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { prophets } from '../data/prophets';
 import { useAppContext } from '../context/AppContext';
@@ -13,7 +13,12 @@ const HomePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>('today');
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const { favorites, completed } = useAppContext();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+  }, [language]);
 
   const getTimeBasedGreeting = () => {
     const hour = new Date().getHours();
@@ -22,7 +27,7 @@ const HomePage: React.FC = () => {
     return t('good_evening');
   };
 
-  const todaysStory = prophets.find(p => p.id === 'ishaq') || prophets[3];
+  const todaysStory = prophets.find(p => p.id === 'ishaq') || prophets[8]; // Ishaq is 9th prophet, index 8
   const favoriteStories = prophets.filter(p => favorites.includes(p.id));
   const completedStories = prophets.filter(p => completed.includes(p.id));
 
@@ -41,17 +46,17 @@ const HomePage: React.FC = () => {
       case 'all':
         return (
           <>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mb-6 max-w-lg mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mb-6 max-w-lg w-full mx-auto">
               <div className="flex items-center justify-between">
-                <button onClick={handlePrevStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100">
+                <button onClick={handlePrevStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100 rtl:space-x-reverse">
                   <ChevronLeft size={20} />
                   <span className="text-sm font-medium">{t('previous')}</span>
                 </button>
                 <div className="text-center">
-                  <p className="text-sm text-gray-500">{t('story_of')}</p>
-                  <p className="text-lg font-semibold text-gray-800">{currentStoryIndex + 1} of {prophets.length}</p>
+                  <p className="text-sm text-gray-500">{t('story')}</p>
+                  <p className="text-lg font-semibold text-gray-800">{currentStoryIndex + 1} {t('of')} {prophets.length}</p>
                 </div>
-                <button onClick={handleNextStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100">
+                <button onClick={handleNextStory} className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors p-2 rounded-lg hover:bg-gray-100 rtl:space-x-reverse">
                   <span className="text-sm font-medium">{t('next')}</span>
                   <ChevronRight size={20} />
                 </button>
@@ -77,7 +82,7 @@ const HomePage: React.FC = () => {
 
         if (storiesToList.length === 0) {
           return (
-            <div className="text-center py-12 max-w-lg mx-auto">
+            <div className="text-center py-12 max-w-lg w-full mx-auto">
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-sm border border-white/50">
                 <div className="text-6xl mb-4">{emptyState.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{emptyState.title}</h3>
@@ -87,7 +92,7 @@ const HomePage: React.FC = () => {
           );
         }
         return (
-          <div className="space-y-4 max-w-lg mx-auto">
+          <div className="space-y-4 max-w-lg w-full mx-auto">
             {storiesToList.map((prophet, index) => (
                <motion.div
                 key={prophet.id}
@@ -113,18 +118,18 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 font-inter pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 font-inter pb-20 overflow-x-hidden">
       <header className="px-4 py-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-md mx-auto"
+          className="text-center max-w-2xl mx-auto"
         >
           <div className="flex justify-between items-start mb-4">
             <div className="flex-1" />
             <div className="flex-1 text-center">
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent mb-3">
+              <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent mb-3">
                 {t('prophet_stories')}
               </h1>
             </div>
@@ -133,17 +138,16 @@ const HomePage: React.FC = () => {
             </div>
           </div>
           
-          <p className="text-gray-700 text-lg mb-6">
+          <p className="text-gray-700 text-base sm:text-lg mb-6">
             {t('learn_messengers')}
           </p>
-          <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full px-6 py-3 shadow-lg inline-flex items-center space-x-2">
+          <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full px-6 py-3 shadow-lg inline-flex items-center space-x-2 rtl:space-x-reverse">
             <span className="text-white font-semibold text-lg">{getTimeBasedGreeting()}</span>
             <span className="text-white text-lg">🌻</span>
           </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mt-6">
-            <h2 className="text-lg font-semibold text-gray-800 flex items-center justify-center space-x-2">
-              <span>{t('assalamu_alaikum')}</span>
-              <span>😊</span>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white/50 mt-6 max-w-md mx-auto">
+            <h2 className="text-lg font-semibold text-gray-800">
+              {t('assalamu_alaikum')}
             </h2>
           </div>
         </motion.div>
@@ -151,15 +155,15 @@ const HomePage: React.FC = () => {
 
       <main className="px-4">
         <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-sm border border-white/50 mb-8">
-          <div className="flex items-center justify-between space-x-1">
+          <div className="flex items-center justify-between space-x-1 rtl:space-x-reverse">
             {tabs.map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as Tab)}
-                className={`flex-1 flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                className={`flex-1 flex items-center justify-center space-x-2 rtl:space-x-reverse px-2 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                   activeTab === tab.id
                     ? 'bg-teal-500 text-white shadow-lg shadow-teal-200'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    : 'text-gray-600 hover:bg-teal-100/70 hover:text-teal-700'
                 }`}
               >
                 <tab.icon size={16} />

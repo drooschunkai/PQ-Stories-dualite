@@ -40,10 +40,10 @@ const translations: Translations = {
     de: 'Guten Abend!'
   },
   'assalamu_alaikum': {
-    en: 'Assalamu Alaikum, little learner!',
-    ar: 'السلام عليكم، أيها المتعلم الصغير!',
-    sv: 'Assalamu Alaikum, lilla lärjunge!',
-    de: 'Assalamu Alaikum, kleiner Lernender!'
+    en: 'Assalamu Alaikum!',
+    ar: 'السلام عليكم!',
+    sv: 'Assalamu Alaikum!',
+    de: 'Assalamu Alaikum!'
   },
   'today': {
     en: 'Today',
@@ -87,11 +87,17 @@ const translations: Translations = {
     sv: 'Nästa',
     de: 'Nächste'
   },
-  'story_of': {
+  'story': {
     en: 'Story',
     ar: 'القصة',
     sv: 'Berättelse',
     de: 'Geschichte'
+  },
+  'of': {
+    en: 'of',
+    ar: 'من',
+    sv: 'av',
+    de: 'von'
   },
   'lesson_story': {
     en: 'Lesson of the Story',
@@ -136,17 +142,27 @@ const translations: Translations = {
     de: 'Abgeschlossene Geschichten erscheinen hier.'
   },
   'playing_story': {
-    en: 'Playing story narration...',
-    ar: 'تشغيل سرد القصة...',
-    sv: 'Spelar berättarröst...',
+    en: 'Playing narration...',
+    ar: 'تشغيل السرد...',
+    sv: 'Spelar upp berättarröst...',
     de: 'Erzählung wird abgespielt...'
   },
-  'tap_play': {
-    en: 'Tap play to listen',
-    ar: 'انقر على تشغيل للاستماع',
-    sv: 'Tryck på spela för att lyssna',
-    de: 'Zum Anhören auf Play tippen'
-  }
+  'listen_story': {
+    en: 'Listen to the story',
+    ar: 'استمع للقصة',
+    sv: 'Lyssna på berättelsen',
+    de: 'Hör dir die Geschichte an'
+  },
+  'narrated_in': {
+    en: 'Narrated in',
+    ar: 'مروية بـ',
+    sv: 'Berättad på',
+    de: 'Erzählt auf'
+  },
+  'en': { en: 'English', ar: 'الإنجليزية', sv: 'Engelska', de: 'Englisch' },
+  'ar': { en: 'Arabic', ar: 'العربية', sv: 'Arabiska', de: 'Arabisch' },
+  'sv': { en: 'Swedish', ar: 'السويدية', sv: 'Svenska', de: 'Schwedisch' },
+  'de': { en: 'German', ar: 'الألمانية', sv: 'Tyska', de: 'Deutsch' },
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
