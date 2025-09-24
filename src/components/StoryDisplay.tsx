@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Heart, BookOpen, BrainCircuit, BookHeart, MessageSquareQuote } from 'lucide-react';
 import { Prophet } from '../types';
 import { useAppContext } from '../context/AppContext';
@@ -27,13 +26,15 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
   const reflectionQuestion = getTranslated(prophet.story.reflectionQuestion);
   const duaEnglish = getTranslated(prophet.story.dua.english);
 
-  const fullStoryText = [
+  const fullStoryTextForTTS = [
     storyTitle,
     ...storyContent,
     mainLesson,
     reflectionQuestion,
     duaEnglish
   ].join('. ');
+
+  const audioUrl = prophet.story.audioUrl?.[language];
 
   useEffect(() => {
     if (!isCompact) {
@@ -121,7 +122,12 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ prophet, isToday, isCompact
       </div>
 
       <div className="mt-6 space-y-4">
-        <AudioPlayer isPlaying={isAudioPlaying} onTogglePlay={toggleAudio} text={fullStoryText} />
+        <AudioPlayer 
+          isPlaying={isAudioPlaying} 
+          onTogglePlay={toggleAudio} 
+          text={fullStoryTextForTTS}
+          audioUrl={audioUrl}
+        />
 
         <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-white/50">
           <p className="text-gray-700 leading-relaxed">{storyContent.join(' ')}</p>

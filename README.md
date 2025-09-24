@@ -43,6 +43,19 @@ A beautiful, multilingual web application featuring all 25 prophets from the Qur
 - **Privacy-Focused**: No external data collection
 - **Cross-Device**: Progress maintained between sessions
 
+## 🛠️ Tech Stack
+
+This project is built with a modern, performant, and scalable frontend stack:
+
+*   **React 19**: A JavaScript library for building user interfaces, utilizing the latest features for optimal performance.
+*   **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript, ensuring code quality and maintainability.
+*   **Vite**: A next-generation frontend tooling that provides an extremely fast development experience and optimized builds.
+*   **Tailwind CSS**: A utility-first CSS framework for rapidly building custom, responsive designs without leaving your HTML.
+*   **Framer Motion**: A production-ready motion library for React to create beautiful and smooth animations.
+*   **Lucide React**: A beautiful and consistent icon library.
+*   **React Context API**: Used for global state management (language, favorites, completion status) in a clean and efficient way.
+*   **Supabase (Integration Ready)**: Prepared for integration as a backend-as-a-service for user authentication, database, and cloud sync.
+
 ## 🚀 New Technical Features
 
 ### 🌐 **Multilingual Infrastructure**

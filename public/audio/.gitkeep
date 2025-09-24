@@ -1,0 +1,23 @@
+# This folder is ready for your audio files.
+#
+# Please upload your MP3 files into this 'public/audio' directory.
+# You can usually do this by dragging and dropping the files from your computer
+# directly into this folder in the file explorer on the left.
+#
+# IMPORTANT: The file names must be all lowercase and match the prophet's ID exactly.
+#
+# Required filenames for the first 12 prophets:
+# adam.mp3
+# idris.mp3
+# nuh.mp3
+# hud.mp3
+# salih.mp3
+# ibrahim.mp3
+# lut.mp3
+# ismail.mp3
+# ishaq.mp3
+# yaqub.mp3
+# yusuf.mp3
+# shuayb.mp3
+#
+# Once uploaded, the app will automatically use them for the English narration.

@@ -21,6 +21,7 @@ export interface Story {
   mainLesson: MultilingualString;
   reflectionQuestion: MultilingualString;
   dua: Dua;
+  audioUrl?: Partial<Record<Language, string>>;
 }
 
 export interface Prophet {

@@ -159,9 +159,15 @@ const translations: Translations = {
     sv: 'Berättad på',
     de: 'Erzählt auf'
   },
+  'narrated_by_human': {
+    en: 'Pre-recorded narration',
+    ar: 'سرد مسجل مسبقًا',
+    sv: 'Förinspelad berättarröst',
+    de: 'Vorab aufgenommene Erzählung'
+  },
   'en': { en: 'English', ar: 'الإنجليزية', sv: 'Engelska', de: 'Englisch' },
   'ar': { en: 'Arabic', ar: 'العربية', sv: 'Arabiska', de: 'Arabisch' },
-  'sv': { en: 'Swedish', ar: 'السويدية', sv: 'Svenska', de: 'Schwedisch' },
+  'sv': { en: 'Swedish', ar: 'السويدية', sv: 'Svenska', de: 'Deutsch' },
   'de': { en: 'German', ar: 'الألمانية', sv: 'Tyska', de: 'Deutsch' },
 };
 
