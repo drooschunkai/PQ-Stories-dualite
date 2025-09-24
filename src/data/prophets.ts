@@ -1,15 +1,8 @@
 import { Prophet } from '../types';
 
 // INSTRUCTIONS FOR AUDIO:
-// To use your custom audio files, please follow these steps:
-// 1. Upload your MP3 files to a file hosting service (e.g., Cloudinary, a public GitHub repository, or any file storage).
-// 2. Get the public, direct link for each MP3 file.
-// 3. In the 'audioUrl' section for each prophet below, replace the placeholder URL with your actual MP3 link.
-//
-// Example:
-// audioUrl: { en: 'https://your-hosting-service.com/path/to/adam.mp3' },
-//
-// The app will automatically play your hosted audio files. For any stories without a URL, it will use the text-to-speech voice.
+// The audio URLs below have been updated to use the correct .wav file extension to match the files in your GitHub repository.
+// This resolves the "NotSupportedError" and ensures audio plays correctly.
 
 export const prophets: Prophet[] = [
   {
@@ -18,7 +11,7 @@ export const prophets: Prophet[] = [
     arabicName: 'آدم',
     order: 1,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/adam.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/adam.wav' },
       title: {
         en: 'The First Human',
         ar: 'الإنسان الأول',
@@ -62,7 +55,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
         transliteration: 'Rabbana zalamna anfusana wa in lam taghfir lana wa tarhamna lanakoonanna minal-khasireen',
         english: {
             en: 'Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers.',
-            ar: 'ربنا ظلمنا أنفسنا وإن لم تغفر لنا وترحمنا لنكونن من الخاسرين.',
+            ar: 'ربنا ظلمنا أنفسنا وإن لم تغفر لنا وترحምና لنكونن من الخاسرين.',
             sv: 'Vår Herre, vi har gjort orätt mot oss själva, och om Du inte förlåter oss och har barmhärtighet med oss, kommer vi sannerligen att höra till förlorarna.',
             de: 'Unser Herr, wir haben uns selbst Unrecht getan, und wenn Du uns nicht vergibst und uns Barmherzigkeit erweist, werden wir sicherlich zu den Verlierern gehören.'
         }
@@ -77,7 +70,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'إدريس',
     order: 2,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/idris.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/idris.wav' },
       title: { en: 'The Truthful One', ar: 'الصادق', sv: 'Den Sanningsenlige', de: 'Der Wahrhaftige' },
       content: {
         en: ['Prophet Idris (peace be upon him) was known as "the truthful" because he always spoke the truth. He was one of the first people to write and use a pen. Allah gave him great wisdom and knowledge about the stars and mathematics. Idris taught people how to make clothes from fabric and how to use weights for fair trading. He spent his life calling people to worship Allah alone and to be honest in their dealings. Allah loved Idris so much that He raised him to a high place in the heavens while he was still alive.'],
@@ -103,7 +96,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'نوح',
     order: 3,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/nuh.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/nuh.wav' },
       title: { en: 'The Great Flood', ar: 'الطوفان العظيم', sv: 'Den Stora Floden', de: 'Die Große Flut' },
       content: { 
         en: ['Prophet Nuh (peace be upon him) was a kind and patient man who lived when people had forgotten Allah. For 950 years, he gently reminded them to worship the one true God, but most people laughed at him. So, Allah commanded Nuh to build a huge boat, an ark. People made fun of him for building a boat on dry land, but Nuh had complete trust in Allah. He gathered his family, the believers, and a pair of every animal onto the ark. Then, a great flood covered the Earth, but everyone inside the ark was safe, protected by Allah\'s mercy.'],
@@ -129,7 +122,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'هود',
     order: 4,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/hud.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/hud.wav' },
       title: { en: 'The Warner of \'Ad', ar: 'منذر عاد', sv: 'Varnaren av \'Ad', de: 'Der Warner von \'Ad' },
       content: { 
         en: ['Prophet Hud (peace be upon him) was sent to the people of \'Ad, who were very strong and built huge buildings and towers. They were proud of their strength and forgot about Allah. Hud warned them gently, saying "Worship Allah alone and be grateful for the strong bodies and skills He gave you." But they refused to listen and said their idols would protect them. Allah sent a terrible windstorm that lasted for seven days and seven nights. Only Hud and the few believers who listened to him were saved.'],
@@ -155,7 +148,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'صالح',
     order: 5,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/salih.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/salih.wav' },
       title: { en: 'The Miracle of the She-Camel', ar: 'معجزة الناقة', sv: 'Miraklet med Kamelstoet', de: 'Das Wunder der Kamelstute' },
       content: { 
         en: ['Prophet Salih (peace be upon him) was sent to the people of Thamud, who carved beautiful houses into mountains. They asked Salih for a miracle, so Allah made a she-camel appear from solid rock! This camel was special - she would drink from their well one day, and they could drink the next day. Salih warned them not to harm the camel, but some evil people killed her. Soon after, a terrible earthquake destroyed their city, but Salih and the believers were saved by Allah.'],
@@ -181,7 +174,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'إبراهيم',
     order: 6,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/ibrahim.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/ibrahim.wav' },
       title: { en: 'The Friend of Allah', ar: 'خليل الله', sv: 'Allahs Vän', de: 'Der Freund Allahs' },
       content: { 
         en: ['Prophet Ibrahim (peace be upon him) was very smart, even as a boy. He knew that the stone statues his people worshipped were not real gods. He bravely challenged their beliefs and showed them how powerless the idols were. The angry king threw Ibrahim into a huge fire, but Ibrahim trusted Allah completely. By Allah\'s command, the fire became cool and safe, and Ibrahim walked out unharmed! This miracle showed everyone the power of the one true God. Because of his unwavering faith, Ibrahim is known as "Khalilullah," the friend of Allah.'],
@@ -207,7 +200,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'لوط',
     order: 7,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/lut.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/lut.wav' },
       title: { en: 'The Righteous Nephew', ar: 'ابن الأخ الصالح', sv: 'Den Rättfärdige Brorsonen', de: 'Der Rechtschaffene Neffe' },
       content: { 
         en: ['Prophet Lut (peace be upon him) was the nephew of Prophet Ibrahim. He was sent to guide the people of Sodom and Gomorrah, who were doing many bad things. Lut tried his best to teach them to be good and kind to each other, but they refused to listen. When angels came to warn Lut that Allah would punish the city, they told him to leave with his family at night. Lut and his daughters were saved, but his wife looked back and was punished. The city was destroyed, but the righteous were protected.'],
@@ -233,7 +226,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'إسماعيل',
     order: 8,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/ismail.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/ismail.wav' },
       title: { en: 'The Willing Son', ar: 'الابن الطائع', sv: 'Den Villige Sonen', de: 'Der Willige Sohn' },
       content: { 
         en: ['Prophet Ismail (peace be upon him) was the beloved son of Prophet Ibrahim. When Ismail was young, Ibrahim had a dream that he should sacrifice his son for Allah. Both father and son were ready to obey Allah completely. Just as Ibrahim was about to sacrifice Ismail, Allah stopped him and provided a ram instead. This showed their perfect faith and obedience to Allah. Ismail grew up to help his father build the Kaaba in Makkah, the house that Muslims still visit today.'],
@@ -259,7 +252,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'إسحاق',
     order: 9,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/ishaq.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/ishaq.wav' },
       title: { en: 'The Promised Gift', ar: 'الهدية الموعودة', sv: 'Den Utlovade Gåvan', de: 'Das Versprochene Geschenk' },
       content: { 
         en: ['Prophet Ibrahim and his wife Sarah waited and waited for a baby for many, many years. They prayed to Allah and never gave up hope. One day, special visitors came to their home - they were angels! The angels had wonderful news: "Allah is giving you a baby boy!" Sarah was so surprised and happy. Just as Allah promised, they had a son named Ishaq (peace be upon him). Ishaq grew up to be a great prophet, just like his father. His story teaches us that Allah always answers our prayers and that good things come to those who are patient.'],
@@ -285,7 +278,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'يعقوب',
     order: 10,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/yaqub.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/yaqub.wav' },
       title: { en: 'The Patient Father', ar: 'الأب الصبور', sv: 'Den Tålmodige Fadern', de: 'Der Geduldige Vater' },
       content: { 
         en: ['Prophet Yaqub (peace be upon him), also called Israel, was the son of Ishaq. He had twelve sons, and he loved them all, but he had a special place in his heart for Yusuf and Binyamin. When his sons took Yusuf away, Yaqub was very sad and cried so much that he became blind. But he never stopped believing that Allah would bring Yusuf back to him. He waited patiently for many years, always praying and trusting in Allah. Finally, Allah reunited him with all his children, and he could see again!'],
@@ -311,7 +304,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'يوسف',
     order: 11,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/yusuf.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/yusuf.wav' },
       title: { en: 'The Beautiful Dream', ar: 'الحلم الجميل', sv: 'Den Vackra Drömmen', de: 'Der Schöne Traum' },
       content: { 
         en: ['Prophet Yusuf (peace be upon him) had an amazing dream that eleven stars, the sun, and the moon were bowing to him. His jealous brothers threw him into a well, but he was rescued and taken to Egypt. Despite many challenges, Yusuf remained patient and always trusted in Allah. Allah gave him the wisdom to understand dreams, and he became a great leader in Egypt. Years later, he forgave his brothers and was reunited with his family. His life shows us that even in hard times, Allah has a beautiful plan for us if we are patient and forgiving.'],
@@ -337,7 +330,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'شعيب',
     order: 12,
     story: {
-      audioUrl: { en: 'https://your-hosting-service.com/path/to/shuayb.mp3' },
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/shuayb.wav' },
       title: { en: 'The Eloquent Speaker', ar: 'الخطيب البليغ', sv: 'Den Vältalige Talaren', de: 'Der Beredte Redner' },
       content: { 
         en: ['Prophet Shu\'ayb (peace be upon him) was known for his beautiful way of speaking. He was sent to the people of Madyan, who were cheating in their business deals. They would use false weights and measures to steal from people. Shu\'ayb taught them to be honest in all their dealings and to worship Allah alone. He warned them that cheating is wrong and that Allah sees everything we do. When they refused to listen, Allah punished them with a terrible earthquake, but Shu\'ayb and the believers were saved.'],
@@ -649,7 +642,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
       mainLesson: { en: 'Allah can do anything He wants, even things that seem impossible. We should always believe in His power.', ar: 'الله يستطيع أن يفعل أي شيء يريده، حتى الأشياء التي تبدو مستحيلة. يجب أن نؤمن دائمًا بقوته.', sv: 'Allah kan göra vad Han vill, även saker som verkar omöjliga. Vi bör alltid tro på Hans makt.', de: 'Allah kann alles tun, was Er will, sogar Dinge, die unmöglich erscheinen. Wir sollten immer an Seine Macht glauben.' },
       reflectionQuestion: { en: 'How can you help heal hurt feelings and bring peace between people who are fighting?', ar: 'كيف يمكنك المساعدة في شفاء المشاعر المجروحة وإحلال السلام بين المتقاتلين؟', sv: 'Hur kan du hjälpa till att läka sårade känslor och skapa fred mellan människor som bråkar?', de: 'Wie kannst du helfen, verletzte Gefühle zu heilen und Frieden zwischen streitenden Menschen zu schaffen?' },
       dua: {
-        arabic: 'رَبَّنَا أَنزِلْ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ تَكُونُ لَنَا عِيدًا',
+        arabic: 'رَبَّنَا أَنZِلْ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ تَكُونُ لَنَا عِيدًا',
         transliteration: 'Rabbana anzil \'alayna ma\'idatan minas-sama\'i takoonu lana \'eeda',
         english: { en: 'Our Lord, send down to us a table from heaven to be for us a festival.', ar: 'ربنا أنزل علينا مائدة من السماء تكون لنا عيدًا.', sv: 'Vår Herre, sänd ner till oss ett bord från himlen för att vara för oss en högtid.', de: 'Unser Herr, sende uns einen Tisch vom Himmel herab, der für uns ein Fest sein soll.' }
       }
