@@ -538,6 +538,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'إلياس',
     order: 20,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/ilyas.wav' },
       title: { en: 'The Caller to Truth', ar: 'الداعي إلى الحق', sv: 'Kallaren till Sanningen', de: 'Der Rufer zur Wahrheit' },
       content: { 
         en: ['Prophet Ilyas (peace be upon him) lived during a time when his people were worshipping a false god called Baal. The king and queen were leading people away from Allah. Ilyas bravely stood up to them and reminded people to worship only Allah. He performed miracles to show Allah\'s power, including stopping the rain for three years. When he challenged the priests of Baal to a contest, Allah sent fire from heaven to prove that He alone was the true God. Many people returned to worshipping Allah, but Ilyas had to hide from the angry king and queen.'],
@@ -563,6 +564,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'اليسع',
     order: 21,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/alyasa.wav' },
       title: { en: 'The Successor', ar: 'الخليفة', sv: 'Efterträdaren', de: 'Der Nachfolger' },
       content: { 
         en: ['Prophet Al-Yasa\' (peace be upon him) was the student and successor of Prophet Ilyas. When Ilyas was taken up to heaven, Al-Yasa\' continued his work, calling people back to worship Allah alone. Allah gave him the power to perform many miracles: he could heal the sick, bring the dead back to life, and purify poisoned water. He helped a poor widow by making her small jar of oil fill many containers, so she could sell the oil and pay her debts. Al-Yasa\' was known for his kindness and always helped those in need.'],
@@ -588,6 +590,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'زكريا',
     order: 22,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/zakariya.wav' },
       title: { en: 'The Elderly Father', ar: 'الأب الشيخ', sv: 'Den Äldre Fadern', de: 'Der Ältere Vater' },
       content: { 
         en: ['Prophet Zakariya (peace be upon him) was already very old when he prayed to Allah for a son. He and his wife had waited their whole lives to have a child. Zakariya took care of Maryam (Mary) in the temple and saw how Allah provided for her miraculously. This gave him hope, and he prayed secretly to Allah for a child who would continue his work. Allah answered his prayer and gave him the good news that he would have a son named Yahya (John). As a sign, Zakariya was unable to speak for three days, except to praise Allah.'],
@@ -613,6 +616,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'يحيى',
     order: 23,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/yahya.wav' },
       title: { en: 'The Gentle Prophet', ar: 'النبي الرقيق', sv: 'Den Milde Profeten', de: 'Der Sanfte Prophet' },
       content: { 
         en: ['Prophet Yahya (peace be upon him) was the son of Zakariya, born when his parents were very old. From the time he was very young, Allah gave Yahya wisdom and made him gentle and kind to everyone. He was very respectful to his parents and never disobeyed them. Yahya lived simply in the desert, eating only what he needed and spending his time in prayer and remembering Allah. He prepared people for the coming of Prophet Isa (Jesus) and baptized those who wanted to follow Allah\'s path. Yahya was known for his pure heart and his love for all of Allah\'s creation.'],
@@ -638,6 +642,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'عيسى',
     order: 24,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/isa.wav' },
       title: { en: 'The Miracle Child', ar: 'الطفل المعجزة', sv: 'Mirakelbarnet', de: 'Das Wunderkind' },
       content: { 
         en: ['Prophet Isa (peace be upon him) was born to Maryam (Mary) in a miraculous way, without a father. Even as a baby, he spoke from his cradle to defend his mother\'s honor. Allah gave Isa amazing miracles: he could heal the blind and the sick, and even bring the dead back to life, all by Allah\'s permission. He taught people to worship Allah alone and to be kind to one another. Some people tried to harm him, but Allah saved him and raised him up to heaven. Isa will return one day before the end of the world to spread peace and justice.'],
