@@ -356,6 +356,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'أيوب',
     order: 13,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/ayyub.wav' },
       title: { en: 'The Patient Believer', ar: 'المؤمن الصبور', sv: 'Den Tålmodige Troende', de: 'Der Geduldige Gläubige' },
       content: { 
         en: ['Prophet Ayyub (peace be upon him) was a very wealthy man with a large family, many animals, and beautiful lands. He was also very righteous and always remembered Allah. To test his faith, Allah allowed Ayyub to lose everything - his wealth, his children, and his health. Ayyub became very sick, but he never complained or stopped believing in Allah. He remained patient and kept praying. After many years of hardship, Allah restored his health, gave him back his wealth, and blessed him with even more children. His story teaches us to be patient during difficult times.'],
@@ -381,6 +382,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'ذو الكفل',
     order: 14,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/dhulKifl.wav' },
       title: { en: 'The Guarantor', ar: 'الكفيل', sv: 'Garanten', de: 'Der Bürge' },
       content: { 
         en: ['Prophet Dhul-Kifl (peace be upon him) got his name because he guaranteed (kafala) to do good deeds and help his people. He was known for his justice and fairness when settling disputes between people. Dhul-Kifl would fast during the day, pray at night, and never get angry when making decisions. He always treated everyone fairly, whether they were rich or poor. People trusted him completely because he always kept his promises and was honest in everything he did.'],
@@ -406,6 +408,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'يونس',
     order: 15,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/yunus.wav' },
       title: { en: 'The Man of the Whale', ar: 'صاحب الحوت', sv: 'Mannen från Valen', de: 'Der Mann des Wals' },
       content: { 
         en: ['Prophet Yunus (peace be upon him) was sent to the people of Nineveh, but they refused to listen to his message. Feeling discouraged, Yunus left the city and boarded a ship. During the journey, a terrible storm arose. The sailors threw lots to see who was causing the bad luck, and it pointed to Yunus. He knew Allah was calling him, so he threw himself into the sea. A huge whale swallowed him, but he was safe inside! For three days, Yunus prayed in the whale\'s belly, asking Allah for forgiveness. Allah commanded the whale to release him, and Yunus returned to his people, who had finally believed.'],
@@ -431,6 +434,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'موسى',
     order: 16,
     story: {
+       audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/musa.wav' },
       title: { en: 'The Staff and the Sea', ar: 'العصا والبحر', sv: 'Staven och Havet', de: 'Der Stab und das Meer' },
       content: { 
         en: ['Prophet Musa (peace be upon him) was sent to a cruel king in Egypt to free the Children of Israel. Allah gave Musa miracles, like a staff that turned into a snake. When the king chased Musa and his people to the Red Sea, they were trapped. But Musa, trusting in Allah, struck the sea with his staff. The sea split in two, creating a dry path for them to cross safely! When the king\'s army followed, the sea closed on them. This powerful story teaches us that with faith in Allah, nothing is impossible.'],
@@ -456,6 +460,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'هارون',
     order: 17,
     story: {
+       audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/harun.wav' },
       title: { en: 'The Eloquent Brother', ar: 'الأخ الفصيح', sv: 'Den Vältalige Brodern', de: 'Der Beredte Bruder' },
       content: { 
         en: ['Prophet Harun (peace be upon him) was the older brother of Musa. When Musa was chosen as a prophet, he asked Allah to let Harun help him because Harun was very good at speaking. Together, they went to Pharaoh to ask him to free the Children of Israel. While Musa was receiving the Torah on Mount Sinai, some people made a golden calf to worship. Harun tried to stop them, but they wouldn\'t listen. When Musa returned, he was upset, but Harun explained what happened. The brothers worked together to guide their people back to the right path.'],
@@ -481,6 +486,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'داود',
     order: 18,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/dawud.wav' },
       title: { en: 'The Shepherd King', ar: 'الملك الراعي', sv: 'Herdekungen', de: 'Der Hirtenkönig' },
       content: { 
         en: ['Prophet Dawud (peace be upon him) was a young shepherd boy who became a great king. He had a beautiful voice and sang praises to Allah that even the mountains and birds would join in with him. Allah gave Dawud many gifts: he could make iron as soft as clay with his hands, and he made the first chainmail armor. When the giant Goliath threatened his people, young Dawud defeated him with just a sling and a stone, trusting completely in Allah. As king, he was always fair and just, and Allah gave him the Psalms (Zabur) to guide his people.'],
@@ -506,6 +512,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'سليمان',
     order: 19,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/sulayman.wav' },
       title: { en: 'The Wise King', ar: 'الملك الحكيم', sv: 'Den Vise Kungen', de: 'Der Weise König' },
       content: { 
         en: ['Prophet Sulayman (peace be upon him) was the son of Dawud and became an even greater king. Allah gave him amazing gifts: he could understand the language of animals and control the wind. Even the jinn worked for him, building magnificent palaces and temples. Once, an ant warned all the other ants that Sulayman\'s army was coming, and Sulayman smiled when he heard this. A hoopoe bird brought him news about the Queen of Sheba, and Sulayman invited her to visit. She was amazed by his wisdom and became a believer. Despite all his power, Sulayman always remembered that everything came from Allah.'],
@@ -656,6 +663,7 @@ de: 'Wenn du etwas Falsches tust, was solltest du tun, um es wieder gutzumachen?
     arabicName: 'محمد',
     order: 25,
     story: {
+      audioUrl: { en: 'https://cdn.jsdelivr.net/gh/drooschunkai/PQ-Stories-dualite@main/public/audio/muhammad.wav' },
       title: { en: 'The Last Messenger', ar: 'خاتم المرسلين', sv: 'Den Sista Budbäraren', de: 'Der Letzte Gesandte' },
       content: { 
         en: ['Prophet Muhammad (peace and blessings be upon him) is the last and final messenger of Allah. He was born in Makkah and was known by everyone as "Al-Ameen" (the trustworthy one) because of his perfect honesty. At age 40, Allah chose him to deliver the final message to all of humanity, the Quran. He taught people to worship only one God, to be kind to everyone, to care for the poor, and to be just. He was a mercy to all the worlds, and his beautiful example is a guide for us in every part of our lives.'],
