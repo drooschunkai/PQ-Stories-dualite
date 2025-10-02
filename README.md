@@ -2,7 +2,7 @@
 
 A beautiful, multilingual web application featuring all 25 prophets from the Quran, designed to teach children about Allah's messengers through engaging stories, interactive features, and authentic Islamic values.
 
-![live](https://pqstories.netlify.app/)
+- live Demo [pqstories.netlify.app](https://pqstories.netlify.app/)
 
 ## ✨ Complete Features
 
